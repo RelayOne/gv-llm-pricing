@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/RelayOne/gv-llm-pricing/main/v1/schema.json",
+  "title": "gv-llm-pricing v1",
+  "description": "Schema for the gv-llm-pricing v1 pricing manifest. Describes per-model USD-per-1k-token pricing for LLM providers, consumed by router-core and related components.",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "models"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v1",
+      "description": "Schema version tag. Must be the literal string \"v1\"."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 timestamp indicating when the manifest was generated."
+    },
+    "source_notes": {
+      "type": "string",
+      "description": "Optional free-form notes about the sources used to produce this manifest."
+    },
+    "models": {
+      "type": "object",
+      "description": "Map from model identifier to pricing record.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "provider",
+          "prompt_usd_per_1k_tokens",
+          "completion_usd_per_1k_tokens"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "openai",
+              "anthropic",
+              "google",
+              "meta",
+              "mistral",
+              "cohere",
+              "other"
+            ],
+            "description": "Model provider identifier."
+          },
+          "prompt_usd_per_1k_tokens": {
+            "type": "number",
+            "minimum": 0,
+            "description": "USD cost per 1,000 prompt (input) tokens."
+          },
+          "completion_usd_per_1k_tokens": {
+            "type": "number",
+            "minimum": 0,
+            "description": "USD cost per 1,000 completion (output) tokens."
+          },
+          "cached_prompt_usd_per_1k_tokens": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Optional USD cost per 1,000 cached prompt tokens, if the provider bills cached prompts separately."
+          },
+          "context_window_tokens": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Optional maximum context window size in tokens."
+          },
+          "deprecated": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this model is marked deprecated."
+          },
+          "deprecation_notes": {
+            "type": "string",
+            "description": "Optional notes describing the deprecation status."
+          }
+        }
+      }
+    }
+  }
+}
