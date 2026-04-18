@@ -1,0 +1,50 @@
+{
+  "name": "@relayone/llm-pricing",
+  "version": "1.0.0",
+  "description": "Canonical per-model LLM pricing table, bundled as an npm package. Source of truth: github.com/RelayOne/gv-llm-pricing.",
+  "type": "module",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    },
+    "./pricing.json": "./v1/pricing.json"
+  },
+  "files": [
+    "index.js",
+    "index.cjs",
+    "index.d.ts",
+    "v1/pricing.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["llm", "pricing", "openai", "anthropic", "google", "tokens", "cost-tracking"],
+  "license": "Apache-2.0",
+  "author": "RelayOne",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RelayOne/gv-llm-pricing.git",
+    "directory": "npm"
+  },
+  "homepage": "https://github.com/RelayOne/gv-llm-pricing#readme",
+  "bugs": {
+    "url": "https://github.com/RelayOne/gv-llm-pricing/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0"
+  },
+  "scripts": {
+    "test": "vitest run"
+  }
+}
