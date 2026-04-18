@@ -1,0 +1,46 @@
+name: sign
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  id-token: write   # for OIDC to Fulcio
+  contents: write   # to create/upload release assets
+
+jobs:
+  cosign-blob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+        with:
+          cosign-release: "v2.4.1"
+      - name: Extract tag
+        id: tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+      - name: Sign v1/pricing.json (keyless, OIDC → Fulcio → Rekor)
+        run: |
+          cosign sign-blob --yes \
+            --output-signature v1/pricing.json.sig \
+            --output-certificate v1/pricing.json.crt \
+            v1/pricing.json
+      - name: Verify the signature we just created (self-check)
+        run: |
+          cosign verify-blob \
+            --certificate v1/pricing.json.crt \
+            --signature v1/pricing.json.sig \
+            --certificate-identity-regexp "https://github.com/RelayOne/gv-llm-pricing/.github/workflows/sign\.yml@.*" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            v1/pricing.json
+      - name: Attach artifacts to the Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          files: |
+            v1/pricing.json
+            v1/pricing.json.sig
+            v1/pricing.json.crt
+          fail_on_unmatched_files: true
