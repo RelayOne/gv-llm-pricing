@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
+      - name: Validate pricing.json against schema.json
+        run: |
+          if [ -f v1/pricing.json ] && [ -f v1/schema.json ]; then
+            check-jsonschema --schemafile v1/schema.json v1/pricing.json
+          else
+            echo "v1/pricing.json or v1/schema.json not yet present; skipping."
+          fi
