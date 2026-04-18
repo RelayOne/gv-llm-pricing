@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "relayone-llm-pricing"
+version = "1.0.0"
+description = "Canonical per-model LLM pricing table, bundled as a Python package. Source of truth: github.com/RelayOne/gv-llm-pricing."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.9"
+authors = [{ name = "RelayOne" }]
+keywords = ["llm", "pricing", "openai", "anthropic", "google", "tokens", "cost-tracking"]
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://github.com/RelayOne/gv-llm-pricing"
+Issues = "https://github.com/RelayOne/gv-llm-pricing/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/relayone_llm_pricing"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src",
+  "README.md",
+  "LICENSE",
+]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/relayone_llm_pricing/v1/pricing.json" = "relayone_llm_pricing/v1/pricing.json"
