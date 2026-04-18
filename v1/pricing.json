@@ -1,0 +1,130 @@
+{
+  "schema_version": "v1",
+  "generated_at": "2026-04-18T00:00:00Z",
+  "source_notes": "Initial seed: approximate list prices as of Claude training cutoff (Jan 2026). MUST be reviewed by maintainer and refreshed to current provider pricing pages before v1.0.0 is tagged. See docs/updating-prices.md once P-5 lands.",
+  "models": {
+    "claude-3-5-haiku-20241022": {
+      "cached_prompt_usd_per_1k_tokens": 0.00008,
+      "completion_usd_per_1k_tokens": 0.004,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.0008,
+      "provider": "anthropic"
+    },
+    "claude-3-5-sonnet-20241022": {
+      "cached_prompt_usd_per_1k_tokens": 0.0003,
+      "completion_usd_per_1k_tokens": 0.015,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.003,
+      "provider": "anthropic"
+    },
+    "claude-haiku-4": {
+      "cached_prompt_usd_per_1k_tokens": 0.00008,
+      "completion_usd_per_1k_tokens": 0.004,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.0008,
+      "provider": "anthropic"
+    },
+    "claude-opus-4": {
+      "cached_prompt_usd_per_1k_tokens": 0.0015,
+      "completion_usd_per_1k_tokens": 0.075,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.015,
+      "provider": "anthropic"
+    },
+    "claude-sonnet-4": {
+      "cached_prompt_usd_per_1k_tokens": 0.0003,
+      "completion_usd_per_1k_tokens": 0.015,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.003,
+      "provider": "anthropic"
+    },
+    "codestral-latest": {
+      "completion_usd_per_1k_tokens": 0.0009,
+      "context_window_tokens": 32000,
+      "prompt_usd_per_1k_tokens": 0.0003,
+      "provider": "mistral"
+    },
+    "gemini-1.5-flash": {
+      "completion_usd_per_1k_tokens": 0.0003,
+      "context_window_tokens": 1000000,
+      "prompt_usd_per_1k_tokens": 0.000075,
+      "provider": "google"
+    },
+    "gemini-1.5-pro": {
+      "completion_usd_per_1k_tokens": 0.005,
+      "context_window_tokens": 2000000,
+      "prompt_usd_per_1k_tokens": 0.00125,
+      "provider": "google"
+    },
+    "gemini-2.0-flash": {
+      "completion_usd_per_1k_tokens": 0.0004,
+      "context_window_tokens": 1000000,
+      "prompt_usd_per_1k_tokens": 0.0001,
+      "provider": "google"
+    },
+    "gpt-4-turbo": {
+      "completion_usd_per_1k_tokens": 0.030,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.010,
+      "provider": "openai"
+    },
+    "gpt-4o": {
+      "cached_prompt_usd_per_1k_tokens": 0.00125,
+      "completion_usd_per_1k_tokens": 0.010,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.0025,
+      "provider": "openai"
+    },
+    "gpt-4o-mini": {
+      "cached_prompt_usd_per_1k_tokens": 0.000075,
+      "completion_usd_per_1k_tokens": 0.0006,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.00015,
+      "provider": "openai"
+    },
+    "llama-3.1-405b": {
+      "completion_usd_per_1k_tokens": 0.015,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.005,
+      "provider": "meta"
+    },
+    "llama-3.1-70b": {
+      "completion_usd_per_1k_tokens": 0.00088,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.00088,
+      "provider": "meta"
+    },
+    "mistral-large-2": {
+      "completion_usd_per_1k_tokens": 0.006,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.002,
+      "provider": "mistral"
+    },
+    "o1": {
+      "cached_prompt_usd_per_1k_tokens": 0.0075,
+      "completion_usd_per_1k_tokens": 0.060,
+      "context_window_tokens": 200000,
+      "prompt_usd_per_1k_tokens": 0.015,
+      "provider": "openai"
+    },
+    "o1-mini": {
+      "cached_prompt_usd_per_1k_tokens": 0.0015,
+      "completion_usd_per_1k_tokens": 0.012,
+      "context_window_tokens": 128000,
+      "prompt_usd_per_1k_tokens": 0.003,
+      "provider": "openai"
+    },
+    "text-embedding-3-large": {
+      "completion_usd_per_1k_tokens": 0,
+      "context_window_tokens": 8191,
+      "prompt_usd_per_1k_tokens": 0.00013,
+      "provider": "openai"
+    },
+    "text-embedding-3-small": {
+      "completion_usd_per_1k_tokens": 0,
+      "context_window_tokens": 8191,
+      "prompt_usd_per_1k_tokens": 0.00002,
+      "provider": "openai"
+    }
+  }
+}
