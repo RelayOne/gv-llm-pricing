@@ -1,0 +1,8 @@
+# CODEOWNERS for gv-llm-pricing
+#
+# Pricing data is a billing-correctness dependency of router-core, so the
+# router-core maintainer team inherits ownership until a dedicated
+# @RelayOne/pricing-maintainers team is created. When that team exists,
+# this file flips to the new team in one PR — no code changes required.
+
+* @RelayOne/router-core-maintainers
